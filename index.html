@@ -243,6 +243,7 @@
   .form-error{display:none;color:#B3261E;background:#FDECEA;border-radius:10px;padding:12px 14px;font-size:.93rem;margin-bottom:16px}
   @media (prefers-color-scheme: dark){ .form-error{color:#F2B8B5;background:#3A1D1B} }
   .form-error.show{display:block}
+  .hp{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
   @media (max-width:900px){ .contact-grid{grid-template-columns:1fr;gap:36px} }
 
   footer{border-top:1px solid var(--line);padding:44px 0 52px;background:var(--bg-2)}
@@ -500,8 +501,8 @@
         <p>A fit call is short and practical: we check whether the Intensive or the Sprint fits your situation, and you hear the scope and fee directly — no pressure either way.</p>
         <ol class="steps">
           <li>Fill in the brief — who the learners are (or who you are), what you've already tried, and what success would look like.</li>
-          <li>Build your brief below and copy it.</li>
-          <li>Send it via LinkedIn, and we'll take the fit call from there.</li>
+          <li>Send it — it comes straight to Dr. Wandera.</li>
+          <li>We reply by email to set up your fit call.</li>
         </ol>
         <p style="margin-top:22px"><a href="https://www.linkedin.com/in/silaswandera/" target="_blank" rel="noopener"><strong>linkedin.com/in/silaswandera</strong></a></p>
       </div>
@@ -514,9 +515,18 @@
             <input id="fName" name="name" type="text" autocomplete="name" placeholder="Your full name" />
           </div>
           <div class="field">
-            <label for="fOrg">Organization <span>(if any)</span></label>
-            <input id="fOrg" name="org" type="text" autocomplete="organization" placeholder="School, company, or team" />
+            <label for="fEmail">Your email</label>
+            <input id="fEmail" name="email" type="email" autocomplete="email" placeholder="So we can reply to you" />
           </div>
+        </div>
+        <div class="field">
+          <label for="fOrg">Organization <span>(if any)</span></label>
+          <input id="fOrg" name="org" type="text" autocomplete="organization" placeholder="School, company, or team" />
+        </div>
+        <!-- Spam trap: hidden from people, but bots fill it in. Submissions with this filled are ignored. -->
+        <div class="hp" aria-hidden="true">
+          <label for="fWebsite">Leave this empty</label>
+          <input id="fWebsite" name="website" type="text" tabindex="-1" autocomplete="off" />
         </div>
         <div class="field">
           <label for="fInterest">I'm interested in</label>
@@ -540,10 +550,16 @@
           <label for="fSuccess">What would success look like?</label>
           <textarea id="fSuccess" name="success" placeholder="What would be different in 90 days if this worked?"></textarea>
         </div>
-        <button class="btn btn-primary" type="submit" style="width:100%">Build my fit-call brief</button>
+        <button class="btn btn-primary" type="submit" id="submitBtn" style="width:100%">Send my fit-call request</button>
+
+        <div class="brief-result" id="briefSent" aria-live="polite">
+          <h3>Thank you — your request is on its way</h3>
+          <p style="margin:0;color:var(--ink-2)">Dr. Wandera will reply by email to set up your fit call. If you don't see a reply within two working days, please check your spam folder or message him on <a href="https://www.linkedin.com/in/silaswandera/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+        </div>
 
         <div class="brief-result" id="briefResult" aria-live="polite">
           <h3>Your fit-call brief</h3>
+          <p id="briefFallbackNote" style="margin:0 0 12px;color:var(--ink-2)">We couldn't send your request just now. Please copy the brief below and send it on LinkedIn instead.</p>
           <pre id="briefText"></pre>
           <div class="brief-actions">
             <button class="btn btn-gold btn-small" type="button" id="copyBrief">Copy brief</button>
@@ -649,44 +665,98 @@
     fwWrap.appendChild(b);
   });
 
-  /* Fit-call brief builder */
+  /* Fit-call request: sends the form to a Google Apps Script web app, which
+     adds a row to a Google Sheet and emails Dr. Wandera. If sending fails,
+     the visitor gets a copyable brief to send on LinkedIn instead. */
+  var FORM_ENDPOINT = ''; // Google Apps Script web app URL (ends in /exec)
+
   var form = document.getElementById('briefForm');
   var errorBox = document.getElementById('formError');
   var result = document.getElementById('briefResult');
+  var sent = document.getElementById('briefSent');
+  var submitBtn = document.getElementById('submitBtn');
   var briefText = document.getElementById('briefText');
   var copyStatus = document.getElementById('copyStatus');
 
   function val(id){ return document.getElementById(id).value.trim(); }
 
+  function showError(msg){
+    errorBox.textContent = msg;
+    errorBox.classList.add('show');
+    result.classList.remove('show');
+    sent.classList.remove('show');
+  }
+
+  function showFallback(){
+    briefText.textContent = buildBrief();
+    copyStatus.textContent = '';
+    result.classList.add('show');
+    result.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var name = val('fName'), build = val('fBuild');
+    var name = val('fName'), email = val('fEmail'), build = val('fBuild');
     if(!name || !build){
-      errorBox.textContent = 'Please add your name and what you are trying to build \u2014 those two are what the fit call starts from.';
-      errorBox.classList.add('show');
-      result.classList.remove('show');
+      showError('Please add your name and what you are trying to build \u2014 those two are what the fit call starts from.');
+      return;
+    }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      showError('Please add a valid email address so Dr. Wandera can reply to you.');
       return;
     }
     errorBox.classList.remove('show');
+    result.classList.remove('show');
+    sent.classList.remove('show');
+
+    if(!FORM_ENDPOINT){ showFallback(); return; }
+
+    var data = new URLSearchParams({
+      name: name,
+      email: email,
+      org: val('fOrg'),
+      interest: interestSelect.value,
+      build: build,
+      tried: val('fTried'),
+      success: val('fSuccess'),
+      website: val('fWebsite'),
+      page: location.href
+    });
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending\u2026';
+    fetch(FORM_ENDPOINT, { method:'POST', body:data })
+      .then(function(r){ return r.json(); })
+      .then(function(res){
+        if(!res || !res.ok) throw new Error('not ok');
+        form.querySelectorAll('input, textarea').forEach(function(el){ el.value = ''; });
+        sent.classList.add('show');
+        sent.scrollIntoView({ behavior:'smooth', block:'nearest' });
+      })
+      .catch(function(){ showFallback(); })
+      .then(function(){
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send my fit-call request';
+      });
+  });
+
+  function buildBrief(){
     var lines = [];
     lines.push('Fit call request \u2014 Wandera Consulting');
     lines.push('');
-    lines.push('Name: ' + name);
+    lines.push('Name: ' + val('fName'));
+    lines.push('Email: ' + val('fEmail'));
     var org = val('fOrg');
     if(org) lines.push('Organization: ' + org);
     lines.push('Interested in: ' + interestSelect.value);
     lines.push('');
     lines.push('What I am trying to build:');
-    lines.push(build);
+    lines.push(val('fBuild'));
     var tried = val('fTried');
     if(tried){ lines.push(''); lines.push('What I have already tried:'); lines.push(tried); }
     var success = val('fSuccess');
     if(success){ lines.push(''); lines.push('What success would look like:'); lines.push(success); }
-    briefText.textContent = lines.join('\n');
-    result.classList.add('show');
-    copyStatus.textContent = '';
-    result.scrollIntoView({ behavior:'smooth', block:'nearest' });
-  });
+    return lines.join('\n');
+  }
 
   document.getElementById('copyBrief').addEventListener('click', function(){
     var text = briefText.textContent;
