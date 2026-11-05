@@ -94,6 +94,9 @@
   .btn-primary{background:var(--brand);color:#fff}
   @media (prefers-color-scheme: dark){ .btn-primary{color:#081711} }
   .btn-primary:hover{background:var(--brand-deep);color:#fff}
+  /* Keep the header button readable: the menu-link colour rule above is more specific, so restate the button colours here */
+  nav.links a.btn-primary,nav.links a.btn-primary:hover{color:#fff;text-decoration:none}
+  @media (prefers-color-scheme: dark){ nav.links a.btn-primary{color:#081711} }
   .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
   .btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
   .btn-gold{background:var(--gold);color:#1A1405}
