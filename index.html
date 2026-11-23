@@ -191,6 +191,45 @@
   .offer.dark .fine{color:#9db4a9}
   .offer .btn{margin-top:22px}
 
+  /* ---------- TFAL Security / DS2 partnership ---------- */
+  .sec-shell{background:var(--card);border-radius:36px;box-shadow:var(--shadow);padding:clamp(22px,4vw,44px);margin-top:44px;border:1px solid var(--line)}
+  .partner-banner{display:flex;gap:16px;align-items:flex-start;background:var(--gold-soft);border:1px solid rgba(183,121,31,.28);border-radius:20px;padding:18px 20px}
+  html[data-theme="dark"] .partner-banner{background:#2e2612;border-color:rgba(217,164,65,.35)}
+  @media (prefers-color-scheme: dark){ html[data-theme="auto"] .partner-banner{background:#2e2612} }
+  .partner-banner .shield-ico{flex:none;width:44px;height:44px;border-radius:12px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center}
+  .partner-banner .shield-ico svg{width:24px;height:24px}
+  .partner-banner h3{font-size:16.5px;line-height:1.3}
+  .partner-banner p{font-size:14.5px;color:var(--sub);margin-top:4px;line-height:1.5}
+  html[data-theme="dark"] .partner-banner p{color:#d8cfb0}
+  .sec-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,44px);margin-top:28px;align-items:start}
+  @media(max-width:900px){.sec-layout{grid-template-columns:1fr}}
+  .sec-col h3{font-size:20px;letter-spacing:-.01em}
+  .sec-col>p{color:var(--sub);font-size:15.5px;margin-top:8px;line-height:1.55}
+  .sec-services{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+  @media(max-width:520px){.sec-services{grid-template-columns:1fr}}
+  .sec-service{border:1px solid var(--line);background:var(--card2);border-radius:16px;padding:13px 15px;font-size:14.5px;font-weight:600;line-height:1.35;display:flex;gap:10px;align-items:flex-start}
+  .sec-service::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-top:7px}
+  .sec-service.featured{grid-column:1 / -1;background:var(--darksec);color:#f5f5f7;border-color:transparent}
+  .sec-service.featured small{display:block;font-weight:400;color:#c9d6cf;font-size:13.5px;margin-top:3px;line-height:1.45}
+  .sec-service.featured::before{background:var(--gold)}
+  .sec-offers{margin-top:22px;display:grid;gap:10px}
+  .sec-offer{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line)}
+  .sec-offer b{font-size:15px;display:block}
+  .sec-offer span{font-size:14px;color:var(--sub);line-height:1.45;display:block;margin-top:2px}
+  .sec-offer .num{flex:none;width:28px;height:28px;border-radius:50%;background:var(--pill);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px}
+  .sec-booking{background:var(--card2);border:1px solid var(--line);border-radius:24px;padding:24px}
+  .sec-booking h3{font-size:20px;line-height:1.25}
+  .sec-booking .who-line{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  .sec-booking-note{font-size:14.5px;color:var(--sub);line-height:1.55;margin-top:8px}
+  .sec-booking-note b{color:var(--ink)}
+  #secForm{display:grid;gap:12px;margin-top:18px}
+  #secForm .btn{width:100%}
+  .sec-track{font-size:12.5px;color:var(--faint);line-height:1.5;margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
+  #secDone{display:none;text-align:center;padding:18px 4px}
+  #secDone .check{width:60px;height:60px;border-radius:50%;background:var(--green);color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  #secDone h4{font-size:19px}
+  #secDone p{color:var(--sub);font-size:14.5px;margin-top:8px;line-height:1.55}
+
   /* ---------- framework ---------- */
   .framework{background:var(--darksec);border-radius:36px;color:#f5f5f7;padding:clamp(28px,5vw,56px);margin-top:84px}
   .framework .kicker{text-align:left}
@@ -346,6 +385,7 @@
       <a href="#resources">Resource Library</a>
       <a href="#what">What we do</a>
       <a href="#offers">Offers</a>
+      <a href="#security">TFAL Security</a>
       <a href="#framework">Framework</a>
       <a href="#about">About</a>
       <a href="#speaking">Speaking</a>
@@ -489,6 +529,102 @@
     </div>
   </section>
 
+  <!-- TFAL SECURITY — DS2 GLOBAL PARTNERSHIP -->
+  <section id="security" aria-labelledby="securityTitle">
+    <div class="wrap">
+      <p class="kicker">Partner module · TFAL Security</p>
+      <h2 class="sec-title" id="securityTitle">Security for your school or team —<br>delivered by DS2 Global</h2>
+      <p class="sec-sub">TFAL Security is the fourth TFAL module, offered through our partnership with Sam Bourgeois and his teams at DS2 Global and Make IT Secure. Wandera Consulting introduces you — Sam's team does the security work.</p>
+
+      <div class="sec-shell">
+        <div class="partner-banner" role="note">
+          <span class="shield-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6z"/><path d="M9 12l2 2 4-4.5"/></svg></span>
+          <div>
+            <h3>Your enquiry will be passed to Sam at DS2 Global — not booked through Dr. Wandera</h3>
+            <p>Please read this before you submit: security enquiries from this section <b>will be passed to Sam at DS2 Global</b>. He and his team will reply to schedule, and they deliver the work. Dr. Wandera is not your security provider and does not take this booking. Submitting below means you understand your request will be passed to Sam.</p>
+          </div>
+        </div>
+
+        <div class="sec-layout">
+          <div class="sec-col">
+            <h3>What DS2 Global covers</h3>
+            <p>Thirteen managed services for schools, nonprofits, and small-to-midsize teams — from everyday IT protection to a 24/7 security operations centre. If you use TFAL for learning, TFAL Security is how the devices, accounts, and data behind it stay protected.</p>
+            <div class="sec-services" aria-label="DS2 Global services">
+              <div class="sec-service featured"><div>Workforce AI Security<small>Featured — safe AI use for staff: policies, training, and guardrails so your team can use AI tools without leaking data.</small></div></div>
+              <div class="sec-service">Managed IT</div>
+              <div class="sec-service">Network Security</div>
+              <div class="sec-service">Cloud Security</div>
+              <div class="sec-service">Email Security</div>
+              <div class="sec-service">Darkweb Monitoring</div>
+              <div class="sec-service">Endpoint Protection</div>
+              <div class="sec-service">24/7 SOC</div>
+              <div class="sec-service">Pentesting</div>
+              <div class="sec-service">Managed Governance</div>
+              <div class="sec-service">Incident Response Command</div>
+              <div class="sec-service">Project Engineering &amp; Management</div>
+              <div class="sec-service">Value Added Resale</div>
+            </div>
+
+            <div class="sec-offers" aria-label="Ways to start with DS2 Global">
+              <div class="sec-offer"><span class="num">1</span><div><b>Complimentary Security Consult</b><span>A first conversation with Sam's team about your current setup and biggest risks — no obligation.</span></div></div>
+              <div class="sec-offer"><span class="num">2</span><div><b>Security Posture Sprint</b><span>A focused review of your posture with clear findings and a prioritised fix list.</span></div></div>
+              <div class="sec-offer"><span class="num">3</span><div><b>Managed Security Partner</b><span>Ongoing managed security — monitoring, response, and governance handled by DS2 Global.</span></div></div>
+            </div>
+            <p style="font-size:14px;color:var(--sub);margin-top:16px;line-height:1.55">Not sure where you stand? Ask Sam's team about the <b style="color:var(--ink)">AI Security Readiness Checklist</b> when you enquire — it's the quickest way to start the conversation.</p>
+          </div>
+
+          <div class="sec-booking" id="security-booking">
+            <p class="who-line">Appointment request · DS2 Global</p>
+            <h3>Request a security consult with Sam</h3>
+            <p class="sec-booking-note">This form is hosted here for convenience. Your request <b>will be passed to Sam at DS2 Global / Make IT Secure</b>, whose team will reply to schedule your appointment. You are <b>not</b> booking a fit call with Dr. Wandera.</p>
+
+            <form id="secForm" data-form="tfal-security" novalidate>
+              <div class="field"><label for="secName">Your name</label><input id="secName" name="name" type="text" autocomplete="name" required placeholder="e.g. Jordan Lee"></div>
+              <div class="field"><label for="secEmail">Your email</label><input id="secEmail" name="email" type="email" autocomplete="email" required placeholder="you@school.edu"></div>
+              <div class="field"><label for="secOrg">Organization, school, or company</label><input id="secOrg" name="org" type="text" autocomplete="organization" placeholder="Where you work or lead"></div>
+              <div class="field"><label for="secService">What do you need help with?</label>
+                <select id="secService" name="service" required>
+                  <option value="">Choose a service…</option>
+                  <option>Workforce AI Security</option>
+                  <option>Complimentary Security Consult</option>
+                  <option>Security Posture Sprint</option>
+                  <option>Managed Security Partner</option>
+                  <option>Managed IT</option>
+                  <option>Network Security</option>
+                  <option>Cloud Security</option>
+                  <option>Email Security</option>
+                  <option>Darkweb Monitoring</option>
+                  <option>Endpoint Protection</option>
+                  <option>24/7 SOC</option>
+                  <option>Pentesting</option>
+                  <option>Managed Governance</option>
+                  <option>Incident Response Command</option>
+                  <option>Project Engineering &amp; Management</option>
+                  <option>Value Added Resale</option>
+                  <option>AI Security Readiness Checklist</option>
+                  <option>Not sure yet — advise me</option>
+                </select>
+              </div>
+              <div class="field"><label for="secMsg">Anything Sam should know? <span style="color:var(--faint);font-weight:400">(optional)</span></label><textarea id="secMsg" name="message" placeholder="Team size, current tools, any incident or deadline — a sentence or two helps Sam prepare." style="width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:14px;background:var(--card);padding:12px 16px;font:inherit;font-size:16px;color:var(--ink);min-height:84px;resize:vertical;line-height:1.45"></textarea></div>
+              <div class="hp" aria-hidden="true"><label for="secWebsite">Website</label><input id="secWebsite" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+              <p class="form-error" data-error role="alert"></p>
+              <button class="btn btn-green" type="submit">Send request — we'll pass it to Sam at DS2 Global →</button>
+              <p style="font-size:13px;color:var(--faint);text-align:center;line-height:1.5">By sending, you agree to be contacted by Sam Bourgeois / DS2 Global about security services. This does not book you with Wandera Consulting.</p>
+            </form>
+
+            <div id="secDone" role="status">
+              <div class="check" aria-hidden="true">✓</div>
+              <h4>Request received — it will be passed to Sam</h4>
+              <p id="secDoneText">Thank you. Your request will be passed to Sam at DS2 Global, whose team will reply to schedule your security consult. Dr. Wandera has a copy of the referral for tracking only — please look out for a reply from Sam's team, not from Wandera Consulting.</p>
+            </div>
+
+            <p class="sec-track"><b style="color:var(--sub)">Referral tracking:</b> Every enquiry from this section is logged and tagged <b style="color:var(--sub)">“TFAL Security — Wandera referral”</b> with the service you selected and the date, so Dr. Wandera and Sam can reconcile these leads together for partnership compensation. Your contact details are shared with DS2 Global for that follow-up.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FRAMEWORK -->
   <div class="wrap">
     <div class="framework" id="framework">
@@ -616,7 +752,7 @@
 <footer>
   <div class="wrap">
     <nav aria-label="Footer">
-      <a href="#watch">Watch</a><a href="#resources">Resource Library</a><a href="#what">What we do</a><a href="#offers">Offers</a>
+      <a href="#watch">Watch</a><a href="#resources">Resource Library</a><a href="#what">What we do</a><a href="#offers">Offers</a><a href="#security">TFAL Security</a>
       <a href="#framework">Framework</a><a href="#about">About</a><a href="#speaking">Speaking</a><a href="#fit-call">Fit call</a>
       <a href="https://silaswandera.com" target="_blank" rel="noopener">silaswandera.com</a>
     </nav>
@@ -827,11 +963,62 @@ document.getElementById('getForm').addEventListener('submit',function(e){
   });
 })();
 
+/* ============ TFAL Security — DS2 Global lead form (tagged for referral tracking) ============ */
+(function(){
+  var secForm=document.getElementById('secForm');
+  if(!secForm) return;
+  var sending=false;
+  secForm.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(sending) return;
+    var nameEl=document.getElementById('secName'), emailEl=document.getElementById('secEmail'),
+        orgEl=document.getElementById('secOrg'), svcEl=document.getElementById('secService'),
+        msgEl=document.getElementById('secMsg');
+    var errEl=secForm.querySelector('[data-error]');
+    function showErr(msg){ if(errEl){ errEl.textContent=msg; errEl.style.display='block'; } }
+    if(errEl) errEl.style.display='none';
+    if(!nameEl.value.trim()){ nameEl.focus(); showErr('Please add your name so Sam knows who he is replying to.'); return; }
+    if(!emailEl.value.trim() || emailEl.value.indexOf('@')<1){ emailEl.focus(); showErr('Please add a valid email — Sam’s team will reply there.'); return; }
+    if(!svcEl.value){ svcEl.focus(); showErr('Please choose a service so your request reaches the right person on Sam’s team.'); return; }
+    var btn=secForm.querySelector('[type="submit"]');
+    var label=btn.textContent;
+    sending=true; btn.disabled=true; btn.textContent='Sending — to be passed to Sam…';
+    var service=svcEl.value;
+    var note=msgEl.value.trim();
+    postLead({
+      name:nameEl.value.trim(),
+      email:emailEl.value.trim(),
+      org:orgEl.value.trim(),
+      interest:'TFAL Security — '+service,
+      build:'[TFAL Security / DS2 Global referral] Service requested: '+service+'. To be passed to Sam at DS2 Global / Make IT Secure — NOT a Wandera Consulting fit call.'+(note?(' Client note: '+note):''),
+      tried:'Source: silaswandera.com #security (TFAL Security section)',
+      success:'Partner: DS2 Global (Sam Bourgeois) · Referral tag: TFAL Security — Wandera referral · For Silas + Sam compensation reconciliation',
+      website:document.getElementById('secWebsite').value||'',
+      page:window.location.href,
+      source:'tfal-security',
+      partner:'DS2 Global — Sam Bourgeois',
+      referral:'TFAL Security — Wandera referral'
+    }).then(function(ok){
+      sending=false;
+      if(ok){
+        secForm.style.display='none';
+        var done=document.getElementById('secDone');
+        if(done) done.style.display='block';
+        var doneText=document.getElementById('secDoneText');
+        if(doneText) doneText.textContent='Thank you, '+nameEl.value.trim().split(' ')[0]+'. Your “'+service+'” request will be passed to Sam at DS2 Global, whose team will reply to '+emailEl.value.trim()+' to schedule your appointment. Dr. Wandera has a copy of the referral for tracking only — please look out for a reply from Sam’s team, not from Wandera Consulting.';
+      } else {
+        btn.disabled=false; btn.textContent=label;
+        showErr('Something went wrong sending that request to be passed to Sam — please check your connection and try again.');
+      }
+    });
+  });
+})();
+
 /* ============ what we do ============ */
 var STAGES=[
   {n:'01',name:'Plan',tag:'Design the learning before anyone builds it',color:'c-green',icon:'plan',
    body:'Strategy and design come first: what should be learned, by whom, and how you will know it worked — before tools or content enter the picture.',
-   tags:['Curriculum design','Competency maps','Program design','AI-readiness roadmaps','Measures that prove it works']},
+   tags:['Curriculum design','Competency maps','Program design','AI literacy training','Building with AI','AI-readiness roadmaps','Measures that prove it works']},
   {n:'02',name:'Connect',tag:'Put the right people on the right path',color:'c-teal',icon:'link',
    body:'Learning moves when people are connected — to mentors, to peers, and to a credible next step, not just to content.',
    tags:['Mentorship','Cohorts','Communities of practice','Pathways to a first job']},
