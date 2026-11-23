@@ -534,13 +534,13 @@
     <div class="wrap">
       <p class="kicker">Partner module · TFAL Security</p>
       <h2 class="sec-title" id="securityTitle">Security for your school or team —<br>delivered by DS2 Global</h2>
-      <p class="sec-sub">TFAL Security is the fourth TFAL module, offered through our partnership with Sam Bourgeois and his teams at DS2 Global and Make IT Secure. Wandera Consulting introduces you — Sam's team does the security work.</p>
+      <p class="sec-sub">TFAL Security is the fourth TFAL module, offered through our partnership with DS2 Global and Make IT Secure. Wandera Consulting introduces you — the DS2 Global team does the security work.</p>
 
       <div class="sec-shell">
         <div class="partner-banner" role="note">
           <span class="shield-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6z"/><path d="M9 12l2 2 4-4.5"/></svg></span>
           <div>
-            <h3>Your enquiry will be passed to DS2 Global — not booked through Dr. Wandera</h3>
+            <h3>Your enquiry will be passed to DS2 Global.</h3>
             <p>Please read this before you submit: security enquiries from this section <b>will be passed to DS2 Global</b>. Their team will reply to schedule, and they deliver the work. Dr. Wandera is not your security provider and does not take this booking. Submitting below means you understand your request will be passed to DS2 Global.</p>
           </div>
         </div>
@@ -566,16 +566,16 @@
             </div>
 
             <div class="sec-offers" aria-label="Ways to start with DS2 Global">
-              <div class="sec-offer"><span class="num">1</span><div><b>Complimentary Security Consult</b><span>A first conversation with Sam's team about your current setup and biggest risks — no obligation.</span></div></div>
+              <div class="sec-offer"><span class="num">1</span><div><b>Complimentary Security Consult</b><span>A first conversation with the DS2 Global team about your current setup and biggest risks — no obligation.</span></div></div>
               <div class="sec-offer"><span class="num">2</span><div><b>Security Posture Sprint</b><span>A focused review of your posture with clear findings and a prioritised fix list.</span></div></div>
               <div class="sec-offer"><span class="num">3</span><div><b>Managed Security Partner</b><span>Ongoing managed security — monitoring, response, and governance handled by DS2 Global.</span></div></div>
             </div>
-            <p style="font-size:14px;color:var(--sub);margin-top:16px;line-height:1.55">Not sure where you stand? Ask Sam's team about the <b style="color:var(--ink)">AI Security Readiness Checklist</b> when you enquire — it's the quickest way to start the conversation.</p>
+            <p style="font-size:14px;color:var(--sub);margin-top:16px;line-height:1.55">Not sure where you stand? Ask the DS2 Global team about the <b style="color:var(--ink)">AI Security Readiness Checklist</b> when you enquire — it's the quickest way to start the conversation.</p>
           </div>
 
           <div class="sec-booking" id="security-booking">
             <p class="who-line">Appointment request · DS2 Global</p>
-            <h3>Request a security consult with Sam</h3>
+            <h3>Request a security consult with DS2 Global</h3>
             <p class="sec-booking-note">This form is hosted here for convenience. Your request <b>will be passed to DS2 Global / Make IT Secure</b>, whose team will reply to schedule your appointment. You are <b>not</b> booking a fit call with Dr. Wandera.</p>
 
             <form id="secForm" data-form="tfal-security" novalidate>
@@ -605,11 +605,11 @@
                   <option>Not sure yet — advise me</option>
                 </select>
               </div>
-              <div class="field"><label for="secMsg">Anything Sam should know? <span style="color:var(--faint);font-weight:400">(optional)</span></label><textarea id="secMsg" name="message" placeholder="Team size, current tools, any incident or deadline — a sentence or two helps Sam prepare." style="width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:14px;background:var(--card);padding:12px 16px;font:inherit;font-size:16px;color:var(--ink);min-height:84px;resize:vertical;line-height:1.45"></textarea></div>
+              <div class="field"><label for="secMsg">Anything DS2 Global should know? <span style="color:var(--faint);font-weight:400">(optional)</span></label><textarea id="secMsg" name="message" placeholder="Team size, current tools, any incident or deadline — a sentence or two helps the DS2 Global team prepare." style="width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:14px;background:var(--card);padding:12px 16px;font:inherit;font-size:16px;color:var(--ink);min-height:84px;resize:vertical;line-height:1.45"></textarea></div>
               <div class="hp" aria-hidden="true"><label for="secWebsite">Website</label><input id="secWebsite" name="website" type="text" tabindex="-1" autocomplete="off"></div>
               <p class="form-error" data-error role="alert"></p>
               <button class="btn btn-green" type="submit">Send request — we'll pass it to DS2 Global →</button>
-              <p style="font-size:13px;color:var(--faint);text-align:center;line-height:1.5">By sending, you agree to be contacted by Sam Bourgeois / DS2 Global about security services. This does not book you with Wandera Consulting.</p>
+              <p style="font-size:13px;color:var(--faint);text-align:center;line-height:1.5">By sending, you agree to be contacted by DS2 Global about security services. This does not book you with Wandera Consulting.</p>
             </form>
 
             <div id="secDone" role="status">
@@ -976,9 +976,9 @@ document.getElementById('getForm').addEventListener('submit',function(e){
     var errEl=secForm.querySelector('[data-error]');
     function showErr(msg){ if(errEl){ errEl.textContent=msg; errEl.style.display='block'; } }
     if(errEl) errEl.style.display='none';
-    if(!nameEl.value.trim()){ nameEl.focus(); showErr('Please add your name so Sam knows who he is replying to.'); return; }
-    if(!emailEl.value.trim() || emailEl.value.indexOf('@')<1){ emailEl.focus(); showErr('Please add a valid email — Sam’s team will reply there.'); return; }
-    if(!svcEl.value){ svcEl.focus(); showErr('Please choose a service so your request reaches the right person on Sam’s team.'); return; }
+    if(!nameEl.value.trim()){ nameEl.focus(); showErr('Please add your name so DS2 Global knows who to reply to.'); return; }
+    if(!emailEl.value.trim() || emailEl.value.indexOf('@')<1){ emailEl.focus(); showErr('Please add a valid email — the DS2 Global team will reply there.'); return; }
+    if(!svcEl.value){ svcEl.focus(); showErr('Please choose a service so your request reaches the right person on the DS2 Global team.'); return; }
     var btn=secForm.querySelector('[type="submit"]');
     var label=btn.textContent;
     sending=true; btn.disabled=true; btn.textContent='Sending — to be passed to DS2 Global…';
@@ -991,11 +991,11 @@ document.getElementById('getForm').addEventListener('submit',function(e){
       interest:'TFAL Security — '+service,
       build:'[TFAL Security / DS2 Global referral] Service requested: '+service+'. To be passed to DS2 Global / Make IT Secure — NOT a Wandera Consulting fit call.'+(note?(' Client note: '+note):''),
       tried:'Source: silaswandera.com #security (TFAL Security section)',
-      success:'Partner: DS2 Global (Sam Bourgeois) · Referral tag: TFAL Security — Wandera referral · For Silas + Sam compensation reconciliation',
+      success:'Partner: DS2 Global · Referral tag: TFAL Security — Wandera referral · For Silas + DS2 Global compensation reconciliation',
       website:document.getElementById('secWebsite').value||'',
       page:window.location.href,
       source:'tfal-security',
-      partner:'DS2 Global — Sam Bourgeois',
+      partner:'DS2 Global',
       referral:'TFAL Security — Wandera referral'
     }).then(function(ok){
       sending=false;
