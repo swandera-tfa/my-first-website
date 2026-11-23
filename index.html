@@ -540,8 +540,8 @@
         <div class="partner-banner" role="note">
           <span class="shield-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6z"/><path d="M9 12l2 2 4-4.5"/></svg></span>
           <div>
-            <h3>Your enquiry will be passed to Sam at DS2 Global — not booked through Dr. Wandera</h3>
-            <p>Please read this before you submit: security enquiries from this section <b>will be passed to Sam at DS2 Global</b>. He and his team will reply to schedule, and they deliver the work. Dr. Wandera is not your security provider and does not take this booking. Submitting below means you understand your request will be passed to Sam.</p>
+            <h3>Your enquiry will be passed to DS2 Global — not booked through Dr. Wandera</h3>
+            <p>Please read this before you submit: security enquiries from this section <b>will be passed to DS2 Global</b>. Their team will reply to schedule, and they deliver the work. Dr. Wandera is not your security provider and does not take this booking. Submitting below means you understand your request will be passed to DS2 Global.</p>
           </div>
         </div>
 
@@ -576,7 +576,7 @@
           <div class="sec-booking" id="security-booking">
             <p class="who-line">Appointment request · DS2 Global</p>
             <h3>Request a security consult with Sam</h3>
-            <p class="sec-booking-note">This form is hosted here for convenience. Your request <b>will be passed to Sam at DS2 Global / Make IT Secure</b>, whose team will reply to schedule your appointment. You are <b>not</b> booking a fit call with Dr. Wandera.</p>
+            <p class="sec-booking-note">This form is hosted here for convenience. Your request <b>will be passed to DS2 Global / Make IT Secure</b>, whose team will reply to schedule your appointment. You are <b>not</b> booking a fit call with Dr. Wandera.</p>
 
             <form id="secForm" data-form="tfal-security" novalidate>
               <div class="field"><label for="secName">Your name</label><input id="secName" name="name" type="text" autocomplete="name" required placeholder="e.g. Jordan Lee"></div>
@@ -608,17 +608,16 @@
               <div class="field"><label for="secMsg">Anything Sam should know? <span style="color:var(--faint);font-weight:400">(optional)</span></label><textarea id="secMsg" name="message" placeholder="Team size, current tools, any incident or deadline — a sentence or two helps Sam prepare." style="width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:14px;background:var(--card);padding:12px 16px;font:inherit;font-size:16px;color:var(--ink);min-height:84px;resize:vertical;line-height:1.45"></textarea></div>
               <div class="hp" aria-hidden="true"><label for="secWebsite">Website</label><input id="secWebsite" name="website" type="text" tabindex="-1" autocomplete="off"></div>
               <p class="form-error" data-error role="alert"></p>
-              <button class="btn btn-green" type="submit">Send request — we'll pass it to Sam at DS2 Global →</button>
+              <button class="btn btn-green" type="submit">Send request — we'll pass it to DS2 Global →</button>
               <p style="font-size:13px;color:var(--faint);text-align:center;line-height:1.5">By sending, you agree to be contacted by Sam Bourgeois / DS2 Global about security services. This does not book you with Wandera Consulting.</p>
             </form>
 
             <div id="secDone" role="status">
               <div class="check" aria-hidden="true">✓</div>
-              <h4>Request received — it will be passed to Sam</h4>
-              <p id="secDoneText">Thank you. Your request will be passed to Sam at DS2 Global, whose team will reply to schedule your security consult. Dr. Wandera has a copy of the referral for tracking only — please look out for a reply from Sam's team, not from Wandera Consulting.</p>
+              <h4>Request received — it will be passed to DS2 Global</h4>
+              <p id="secDoneText">Thank you. Your request will be passed to DS2 Global, whose team will reply to schedule your security consult. Please look out for a reply from the DS2 Global team, not from Wandera Consulting.</p>
             </div>
 
-            <p class="sec-track"><b style="color:var(--sub)">Referral tracking:</b> Every enquiry from this section is logged and tagged <b style="color:var(--sub)">“TFAL Security — Wandera referral”</b> with the service you selected and the date, so Dr. Wandera and Sam can reconcile these leads together for partnership compensation. Your contact details are shared with DS2 Global for that follow-up.</p>
           </div>
         </div>
       </div>
@@ -982,7 +981,7 @@ document.getElementById('getForm').addEventListener('submit',function(e){
     if(!svcEl.value){ svcEl.focus(); showErr('Please choose a service so your request reaches the right person on Sam’s team.'); return; }
     var btn=secForm.querySelector('[type="submit"]');
     var label=btn.textContent;
-    sending=true; btn.disabled=true; btn.textContent='Sending — to be passed to Sam…';
+    sending=true; btn.disabled=true; btn.textContent='Sending — to be passed to DS2 Global…';
     var service=svcEl.value;
     var note=msgEl.value.trim();
     postLead({
@@ -990,7 +989,7 @@ document.getElementById('getForm').addEventListener('submit',function(e){
       email:emailEl.value.trim(),
       org:orgEl.value.trim(),
       interest:'TFAL Security — '+service,
-      build:'[TFAL Security / DS2 Global referral] Service requested: '+service+'. To be passed to Sam at DS2 Global / Make IT Secure — NOT a Wandera Consulting fit call.'+(note?(' Client note: '+note):''),
+      build:'[TFAL Security / DS2 Global referral] Service requested: '+service+'. To be passed to DS2 Global / Make IT Secure — NOT a Wandera Consulting fit call.'+(note?(' Client note: '+note):''),
       tried:'Source: silaswandera.com #security (TFAL Security section)',
       success:'Partner: DS2 Global (Sam Bourgeois) · Referral tag: TFAL Security — Wandera referral · For Silas + Sam compensation reconciliation',
       website:document.getElementById('secWebsite').value||'',
@@ -1005,10 +1004,10 @@ document.getElementById('getForm').addEventListener('submit',function(e){
         var done=document.getElementById('secDone');
         if(done) done.style.display='block';
         var doneText=document.getElementById('secDoneText');
-        if(doneText) doneText.textContent='Thank you, '+nameEl.value.trim().split(' ')[0]+'. Your “'+service+'” request will be passed to Sam at DS2 Global, whose team will reply to '+emailEl.value.trim()+' to schedule your appointment. Dr. Wandera has a copy of the referral for tracking only — please look out for a reply from Sam’s team, not from Wandera Consulting.';
+        if(doneText) doneText.textContent='Thank you, '+nameEl.value.trim().split(' ')[0]+'. Your “'+service+'” request will be passed to DS2 Global, whose team will reply to '+emailEl.value.trim()+' to schedule your appointment. Please look out for a reply from the DS2 Global team, not from Wandera Consulting.';
       } else {
         btn.disabled=false; btn.textContent=label;
-        showErr('Something went wrong sending that request to be passed to Sam — please check your connection and try again.');
+        showErr('Something went wrong sending that request to be passed to DS2 Global — please check your connection and try again.');
       }
     });
   });
